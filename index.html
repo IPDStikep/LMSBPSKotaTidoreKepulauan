@@ -1327,7 +1327,7 @@
       const btn = document.getElementById('btnVerifyOtp');
       btn.disabled = true;
       btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span><span>Memverifikasi...</span>';
-      showProcessLoading('Memverifikasi Kode OTP...', 'Memvalidasi sesi 4 hari dan memuat ruang kerja Anda.');
+      showProcessLoading('Memverifikasi Kode OTP...', 'Memvalidasi sesi 4 dan memuat ruang kerja Anda.');
 
       if (IS_GAS_ENV) {
         callBackendGAS('verifyLoginOtp', [pendingOtpEmail, otpCode])
@@ -1346,7 +1346,7 @@
             savePersistentClientSession(res.sessionToken, res.user);
             resetOtpLoginForm();
             enterAppShell();
-            showToast('Verifikasi berhasil! Sesi aktif selama 4 hari. Selamat datang, ' + res.user.nama_lengkap);
+            showToast('Verifikasi berhasil! Sesi aktif. Selamat datang, ' + res.user.nama_lengkap);
           })
           .catch(err => {
             closeProcessLoading();
@@ -1382,7 +1382,7 @@
       const btn = document.getElementById('btnVerifyIdSobat');
       btn.disabled = true;
       btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span><span>Memverifikasi...</span>';
-      showProcessLoading('Memverifikasi ID Sobat...', 'Memvalidasi identitas dan menyiapkan sesi 4 hari.');
+      showProcessLoading('Memverifikasi ID Sobat...', 'Memvalidasi identitas dan menyiapkan sesi.');
 
       if (IS_GAS_ENV) {
         callBackendGAS('verifyLoginFallbackIdSobat', [pendingOtpEmail, idSobat])
@@ -1454,7 +1454,7 @@
       }
       user.last_login = formatDateTimeID(new Date());
       MockDB.saveAll(db);
-      MockDB.logAudit(user.email, user.role, 'LOGIN_OTP', user.user_id, 'Login terverifikasi OTP (Sesi 4 Hari)');
+      MockDB.logAudit(user.email, user.role, 'LOGIN_OTP', user.user_id, 'Login terverifikasi OTP');
 
       currentUser = user;
       savePersistentClientSession('LOCAL_TOKEN_' + user.user_id, user);
