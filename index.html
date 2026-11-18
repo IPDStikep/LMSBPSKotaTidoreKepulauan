@@ -1327,7 +1327,7 @@
       const btn = document.getElementById('btnVerifyOtp');
       btn.disabled = true;
       btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span><span>Memverifikasi...</span>';
-      showProcessLoading('Memverifikasi Kode OTP...', 'Memvalidasi sesi 4 dan memuat ruang kerja Anda.');
+      showProcessLoading('Memverifikasi Kode OTP...', 'Memvalidasi sesi dan memuat ruang kerja Anda.');
 
       if (IS_GAS_ENV) {
         callBackendGAS('verifyLoginOtp', [pendingOtpEmail, otpCode])
